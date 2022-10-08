@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/WEB_053501_Sauchuk.csproj": {}
+  },
+  "projects": {
+    "/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/WEB_053501_Sauchuk.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/WEB_053501_Sauchuk.csproj",
+        "projectName": "WEB_053501_Sauchuk",
+        "projectPath": "/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/WEB_053501_Sauchuk.csproj",
+        "packagesPath": "/home/ubuntu/.nuget/packages/",
+        "outputPath": "/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ubuntu/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/mono/msbuild/Current/bin/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

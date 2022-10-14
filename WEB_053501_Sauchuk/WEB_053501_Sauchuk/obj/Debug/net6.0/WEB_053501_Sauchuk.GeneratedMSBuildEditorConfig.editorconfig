@@ -27,12 +27,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/Views/Shared/Components/Cart/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvQ2FydC9EZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/Views/Shared/Components/Menu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTWVudS9EZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/Views/Shared/_UserPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Vc2VyUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/ubuntu/Documents/Study/IGII/WEB_053501_Sauchuk/WEB_053501_Sauchuk/Views/Shared/_ValidationScriptsPartial.cshtml]

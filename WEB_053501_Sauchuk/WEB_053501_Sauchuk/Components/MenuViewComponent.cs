@@ -32,7 +32,7 @@ public class MenuViewComponent : ViewComponent
             // (применить соответствующий класс CSS)
             if (_matchArea || _matchController)
             {
-                item.Active = "active";
+                item.Active = "active-nav";
             }
         }
 

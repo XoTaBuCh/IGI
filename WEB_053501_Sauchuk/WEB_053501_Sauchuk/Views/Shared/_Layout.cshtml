@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using WEB_053501_Sauchuk.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> userManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -14,20 +18,25 @@
 <body>
 <header>
     <!-- Панель навигации -->
-            <div class="container">
-                <nav class="navbar navbar-expand-md navbar-dark bg-red">
-                    <!-- меню сайта -->
-                    <a class="navbar-brand" asp-action="Index" asp-controller="Home">WebLabsV06</a>
-                    <div class="navbar-nav">
-                        @await Component.InvokeAsync("Menu");
-                    </div>
-                    <!-- меню сайта - конец -->
-                    <!-- Информация пользователя -->
-                    <partial name="_UserPartial" />
-                    <!-- Информация пользователя - конец -->
-                </nav> <!-- Панель навигации - конец -->
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark bg-red">
+            <!-- меню сайта -->
+            <a class="navbar-brand" asp-action="Index" asp-controller="Home">WebLabsV06</a>
+            <div class="navbar-nav">
+                @await Component.InvokeAsync("Menu");
             </div>
-        </header><!-- header - конец -->
+            <!-- меню сайта - конец -->
+            <!-- Информация пользователя -->
+            <partial name="_LoginPartial"/>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                @await Component.InvokeAsync("Cart")
+                <partial name="_UserPartial"/>
+            }
+            <!-- Информация пользователя - конец -->
+        </nav> <!-- Панель навигации - конец -->
+    </div>
+</header><!-- header - конец -->
 
 <main class="container">
     @RenderBody()

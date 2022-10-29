@@ -1,21 +1,22 @@
-@await Component.InvokeAsync("Cart")
+@using Microsoft.AspNetCore.Identity
+@using WEB_053501_Sauchuk.Entities
+@inject SignInManager<ApplicationUser> SignInManager
 
 <div class="dropdown ml-4 nav-color">
-    <div class="dropdown-toggle" id="dropdownMenuButton"
-         data-toggle="dropdown" aria-haspopup="true"
-         aria-expanded="false">
-        <img src="images/avatar.jpeg" width="60"
-             alt="User" class="rounded" />
+    <div class=" dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <image src="@Url.Action("GetImage", "LoadAvatar")"/>
     </div>
     <div class="dropdown-menu"
          aria-labelledby="dropdownMenuButton">
-        <div class="dropdown-item-text">
-            <img src="images/avatar.jpeg" width="50"
-                 alt="User" class="rounded" />
-            tanzanit2003@gmail.com
+        <div class="dropdown-item-text" style="text-align:center;">
+            <image src="@Url.Action("GetImage", "LoadAvatar")" width="50" alt="User" class="rounded"/>
+            <span>@User.Identity.Name</span>
         </div>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Мои товары</a>
-        <a class="dropdown-item" href="#">Log off</a>
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@ViewContext.HttpContext.Request.Path">
+            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+
     </div>
 </div>

@@ -1,0 +1,12 @@
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\bin\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.deps.json
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\bin\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.dll
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\bin\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.pdb
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.csproj.AssemblyReference.cache
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.AssemblyInfoInputs.cache
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.AssemblyInfo.cs
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.csproj.CoreCompileInputs.cache
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.dll
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\refint\WEB_053501_Sauchuk.Blazor.Shared.dll
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\WEB_053501_Sauchuk.Blazor.Shared.pdb
+C:\Users\HP\RiderProjects\IGI\WEB_053501_Sauchuk\WEB_053501_Sauchuk.Blazor\Shared\obj\Debug\net6.0\ref\WEB_053501_Sauchuk.Blazor.Shared.dll

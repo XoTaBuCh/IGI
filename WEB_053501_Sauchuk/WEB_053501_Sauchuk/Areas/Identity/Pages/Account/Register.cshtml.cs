@@ -80,6 +80,9 @@ namespace WEB_053501_Sauchuk.Areas.Identity.Pages.Account
             [Display(Name = "Email")]
             public string Email { get; set; }
 
+            [Display(Name = "Avatar")]
+            public IFormFile Image { get; set; }
+            
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -114,9 +117,16 @@ namespace WEB_053501_Sauchuk.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+                user.EmailConfirmed = true;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                
+                if (Input.Image != null &&  Input.Image.Length != 0) {
+                    user.Image = Some.ImageConverter.ImageToBase64(Input.Image, true);
+                    var ms = new MemoryStream();
+                    Input.Image.CopyToAsync(ms);
+                }
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

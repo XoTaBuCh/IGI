@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Http
+@using System.Net
+@using System.Net.Http
+@using Newtonsoft.Json
+@using WEB_053501_Sauchuk.Models
+@using WEB_053501_Sauchuk.Entities
+
+
+@model ListModelView<Food>
+    <div style="padding:0; margin:0; display:flex; flex-direction: row; align-items: stretch">
+        <div class="list-group mr-4 col-1.5">
+            <a class="list-group-item list-group-item-action active btn-secondary">
+                Категории
+            </a>
+            @{
+                List<string> categories = ViewData["Categories"] as List<string>;
+                categories.Insert(0, "Все");
+                foreach(string category in categories)
+                {
+                    <a class="list-group-item list-group-item-action" asp-action="Index" asp-controller="Product" asp-route-category="@category">@category</a>
+                }
+            }
+        </div>
+        <div id="list" style="display:flex; flex-direction:row">
+            <partial name="_ListPartial" model="@Model" />
+        </div>
+    </div>
+
+<div class="mt-4" id="product-pager">
+    <partial name="_PagerPartial" model="@(new PagerData(){Pages = Model.Pages, Current = Model.Current, Category = @ViewData["Category"] as string})" />
+</div>
+
+<script>
+    var page = @Model.Current;
+    var pages = @Model.Pages;
+    var category = "@Html.Raw(ViewData["Category"])";
+</script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+ $(document).ready(function () {
+        $(".page-link").click(function (e) {
+            e.preventDefault();
+            console.log("Change active link")
+            var uri = this.attributes["href"].value;
+            $("#list").load(uri);
+            $(".active").removeClass("active disabled");
+            $(this).parent().addClass("active");
+            history.pushState(null, null, uri);
+        });
+    });
+</script>

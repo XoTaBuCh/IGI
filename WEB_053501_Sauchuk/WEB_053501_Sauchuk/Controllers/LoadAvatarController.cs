@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.StaticFiles;
 using WEB_053501_Sauchuk.Data;
 using WEB_053501_Sauchuk.Entities;
 
@@ -11,42 +10,34 @@ public class LoadAvatarController : Controller
     private UserManager<ApplicationUser>? _userManager;
     private IWebHostEnvironment? _webHostEnvironment;
     private ApplicationDbContext _context;
+    private SignInManager<ApplicationUser> _signInManager;
+
     private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-    public LoadAvatarController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+    public LoadAvatarController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
     {
         _context = context;
         _userManager = userManager;
+        _signInManager = signInManager;
+
     }
-
-    public async Task<IActionResult> GetImage([FromServices] Microsoft.AspNetCore.Hosting.IWebHostEnvironment env)
+    public async Task<IActionResult> GetImage([FromServices] IWebHostEnvironment env)
     {
-        var user = await GetCurrentUserAsync();
-
-        if (user != null && user.Image?.Length > 0)
+        FileStreamResult defaultAvatar = File(env.WebRootFileProvider.GetFileInfo("/images/avatar.jpeg").CreateReadStream(), "image/jpeg");
+        if (_signInManager.IsSignedIn(User))
         {
-            return File(user.Image, user.ContentType);
+            ApplicationUser user = await _userManager?.FindByEmailAsync(User.Identity.Name);
+
+            string base64Avatar = user.Image;
+            if(base64Avatar == "")
+            {
+                return defaultAvatar;
+            }
+            return File(Some.ImageConverter.Base64ToImage(base64Avatar), "image/jpeg");
         }
         else
         {
-            var avatarPath = "/images/avatar.jpeg";
-            Console.WriteLine(avatarPath);
-            return File(env.WebRootFileProvider
-                .GetFileInfo(avatarPath)
-                .CreateReadStream(), "images/...");
+            return defaultAvatar;
         }
-
-        // var provider = env.WebRootFileProvider;
-        // var path = Path.Combine("images", "avatar.jpeg");
-        // var fInfo = provider.GetFileInfo(path);
-        // var ext = Path.GetExtension(fInfo.Name);
-        // var extProvider = new FileExtensionContentTypeProvider();
-        //
-        // return File(fInfo.CreateReadStream(), extProvider.Mappings[ext]);
-    }
-
-    public IActionResult Index()
-    {
-        return View(_context.Users.ToList());
     }
 }

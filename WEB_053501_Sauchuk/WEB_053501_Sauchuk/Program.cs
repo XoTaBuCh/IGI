@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WEB_053501_Sauchuk.Data;
 using WEB_053501_Sauchuk.Entities;
+using WEB_053501_Sauchuk.Extensions;
+using WEB_053501_Sauchuk.Models;
+using WEB_053501_Sauchuk.Services;
+using WEB_053501_Sauchuk.Some;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +27,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<Cart>(sp => CartService.GetCart(sp));
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication();
@@ -34,7 +39,30 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = $"/Identity/Account/Logout";
 });
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(opt =>
+{
+    opt.Cookie.HttpOnly = true;
+    opt.Cookie.IsEssential = true;
+});
+
+builder.Host.ConfigureLogging(lp =>
+{
+    lp.ClearProviders();
+    lp.AddFilter("Microsoft", LogLevel.None);
+});
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
+    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+    DbInitializer.Initialize(context, userManager, roleManager).Wait();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -55,10 +83,16 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
+
+ILoggerFactory logger = app.Services.GetService<ILoggerFactory>();
+logger.AddFile("Logs/log-{Date}.txt");
+app.UseFileLogging();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
 
 app.Run();

@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Http
+@using WEB_053501_Sauchuk.Entities
+
+@model Food
+@{
+    HttpRequest request = ViewContext.HttpContext.Request;
+    string returnUrl = request.Path + request.QueryString.ToUriComponent();;
+}
+<div class="card p-0 mr-4 col-4">
+    <div>
+        <img style="height: 100%" class="card-img-top" src="@Url.Action("GetImage", "Product", new {imageId = @Model.ImageId})" />
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+    </div>
+    <div class="card-footer">
+        <p class="mt-2">
+            <a style="width:100%" class="btn btn-primary" asp-action="Add" asp-controller="Cart" 
+            asp-route-id="@Model.Id" asp-route-returnUrl="@returnUrl">
+                <i class="fa fa-shopping-cart"></i>
+                В корзину
+            </a>
+        </p>
+        <h5 class="card-title">@Model.Price руб.</h5>
+    </div>
+</div>
